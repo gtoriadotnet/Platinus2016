@@ -1,0 +1,6 @@
+network/streaming.h
+line 167 replaced with org: "if (remoteChecksum == 0)"
+network/clientreplicator.cpp
+line 507 commented out
+commented out all references to HATE_RETURN_CHECK
+commented something in application.cpp

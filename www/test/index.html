@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8" >
+</head>
+<body style="margin:0;">
+
+<div id="container" style="width:100%;height:500px;border:1px solid grey"></div>
+<input type="submit" value="lol" id = "joe"></input>
+
+
+<script src="vs/loader.js"></script>
+<script>
+
+
+require.config({ paths: { 'vs': 'vs' }});
+require(['vs/editor/editor.main'], function() {
+    window.editor = monaco.editor.create(document.getElementById('container'),                 {
+        value: [
+            'print("Hello world!")',
+        ].join('\n'),
+        language: 'lua',
+		theme: 'vs-dark'
+		
+    });
+	function post() {
+	var val = window.editor.getValue()
+	var test = fetch("//platinus2016.ga/test/test.php", {
+  "headers": {
+    "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+    "accept-language": "en-US,en;q=0.9",
+    "cache-control": "max-age=0",
+    "content-type": "application/x-www-form-urlencoded",
+    "upgrade-insecure-requests": "1"
+  },
+  "ReferrerPolicy": "Access-Control-Allow-Origin",
+  "body": "balls="+encodeURI(val),
+  "method": "POST",
+  "mode": "cors",
+  "credentials": "include"
+});
+console.log(test)
+	}
+	document.getElementById('joe').onclick = post;
+	
+});
+
+
+
+</script>
+</body>
+</html>
